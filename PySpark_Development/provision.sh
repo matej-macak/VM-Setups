@@ -1,11 +1,13 @@
 ## This is a new version of Neuron box
 
+$PYTHON_VERSION = 3.7.0
+
 #Update dependencies
 sudo apt-get update
 sudo apt-get install build-essential -y
 sudo apt-get install python3-dev -y
 sudo apt-get install zlib1g-dev -y
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev -y
+sudo apt-get install libreadline-gplv2-dev libffi-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev -y
 
 
 # Install Python
@@ -30,6 +32,7 @@ sudo pip3.6 install --upgrade pip
 sudo pip3.6 install numpy scipy matplotlib
 sudo pip3.6 install pandas scikit-learn ipython pyyaml
 sudo pip3.6 install jupyter jupyterlab tqdm
+sudo pip3.6 install Cython
 sudo pip3.6 install tensorflow keras pyarrow scikit-optimize xgboost seaborn bokeh
 sudo pip3.6 install ipympl
 sudo jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib
@@ -62,16 +65,15 @@ sudo apt-get install proj-bin -y
 sudo apt-get install libproj-dev -y
 sudo apt-get install binutils gdal-bin -y
 
-sudo wget http://download.osgeo.org/geos/geos-3.6.2.tar.bz2
-sudo bzip2 -d geos-3.6.2.tar.bz2
-sudo tar -xvf geos-3.6.2.tar
-cd geos-3.6.2/
+sudo wget http://download.osgeo.org/geos/geos-3.6.3.tar.bz2
+sudo bzip2 -d geos-3.6.3.tar.bz2
+sudo tar -xvf geos-3.6.3.tar
+cd geos-3.6.3/
 sudo ./configure
 sudo make
 sudo make install
 cd ..
 
-sudo pip3.6 install geoviews
 
 # Install git
 sudo apt-get install git
@@ -85,14 +87,15 @@ sudo tar -xvzf spark-2.3.1-bin-hadoop2.7.tgz
 sudo pip3.6 install pyspark
 sudo pip3.6 install findspark
 
-
 # Add this into .profile and .bash_profile
-[ -f ~/.profile] || touch ~/.profile
-[ -f ~/.bash_profile] || touch ~/.bash_profile
 
-grep 'SPARK_HOME=/home/vagrant/spark-2.3.1-bin-hadoop2.7' ~/.profile || echo 'SPARK_HOME=/home/vagrant/spark-2.3.1-bin-hadoop2.7' | tee -a ~/.profile
+echo PATH $PATH
 
-grep 'PATH=$SPARK_HOME/python:$PYTHONPATH' ~/.profile || echo 'export PATH=$SPARK_HOME/python:$PYTHONPATH' | tee -a ~/.profile
+[ -f ~/.profile ] || touch ~/.profile
+
+grep 'SPARK_HOME=/home/vagrant/spark-2.3.1-bin-hadoop2.7' ~/.profile || echo 'export SPARK_HOME=/home/vagrant/spark-2.3.1-bin-hadoop2.7' | tee -a ~/.profile
+
+grep 'PATH=$SPARK_HOME/python:$PATH' ~/.profile || echo 'export PATH=$SPARK_HOME/python:$PATH' | tee -a ~/.profile
 grep 'PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH' ~/.profile || echo 'export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH' | tee -a ~/.profile
 grep 'PYSPARK_DRIVER_PYTHON="jupyter"' ~/.profile || echo 'export PYSPARK_DRIVER_PYTHON="jupyter"' | tee -a ~/.profile
 grep 'PYSPARK_DRIVER_PYTHON_OPTS="notebook"' ~/.profile || echo 'export PYSPARK_DRIVER_PYTHON_OPTS="notebook"' | tee -a ~/.profile
@@ -100,9 +103,9 @@ grep 'PYSPARK_PYTHON=python3.6' ~/.profile || echo 'export PYSPARK_PYTHON=python
 
 . ~/.profile
 
-sudo chmod /home/vagrant/spark-2.3.1-bin-hadoop2.7
-sudo chmod /home/vagrant/spark-2.3.1-bin-hadoop2.7/python
-sudo chmod /home/vagrant/spark-2.3.1-bin-hadoop2.7/python/pyspark
+sudo chmod 777 /home/vagrant/spark-2.3.1-bin-hadoop2.7
+sudo chmod 777 /home/vagrant/spark-2.3.1-bin-hadoop2.7/python
+sudo chmod 777 /home/vagrant/spark-2.3.1-bin-hadoop2.7/python/pyspark
 
 
 
