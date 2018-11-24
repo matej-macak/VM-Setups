@@ -1,7 +1,6 @@
 ## Setup version variables
-export PYTHON_VERSION = 3.6.5
-export GEOS_VERSION = 3.6.3
-export SPARK_VERSION = 
+export PYTHON_VERSION=3.6.5
+export GEOS_VERSION=3.6.3
 
 #Update dependencies
 sudo apt-get update
@@ -72,9 +71,6 @@ sudo apt-get install scala -y
 sudo wget http://apache.claz.org/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz
 sudo tar -xvzf spark-2.3.1-bin-hadoop2.7.tgz
 
-sudo pip3.6 install pyspark
-sudo pip3.6 install findspark
-
 # Add this into .profile and .bash_profile
 
 echo PATH $PATH
@@ -111,3 +107,7 @@ cd ~
 sudo wget https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 sudo cp chromedriver /usr/local/bin/
+
+## Final installations
+sudo pip3.6 install pyspark
+sudo pip3.6 install findspark
