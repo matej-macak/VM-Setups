@@ -30,14 +30,10 @@ sudo apt-get install nodejs -y
 
 # Install IPython Notebook dependencies
 sudo pip3.6 install --upgrade pip
-sudo pip3.6 install numpy scipy matplotlib
-sudo pip3.6 install pandas scikit-learn ipython pyyaml
-sudo pip3.6 install jupyter jupyterlab tqdm
-sudo pip3.6 install Cython
-sudo pip3.6 install tensorflow keras pyarrow scikit-optimize xgboost seaborn bokeh
-sudo pip3.6 install ipympl
+sudo pip3.6 install -r requirements.txt
+
+# Install jupyter-lab extension
 sudo jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib
-sudo pip3.6 install pyglmnet
 
 # Install Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -52,16 +48,8 @@ sudo yarn install
 sudo yarn run build
 sudo jupyter labextension link . --dev
 
-# Install holoviews and geoviews for python visualisation
-sudo pip3.6 install holoviews[all]
+# Holoviews and geoviews installation
 sudo jupyter labextension install @pyviz/jupyterlab_pyviz
-
-# Install geoviews
-sudo pip3.6 install cython
-sudo pip3.6 install shapely
-sudo pip3.6 install pyshp
-sudo pip3.6 install pillow
-sudo pip3.6 install xarray
 sudo apt-get install proj-bin -y
 sudo apt-get install libproj-dev -y
 sudo apt-get install binutils gdal-bin -y
@@ -123,9 +111,3 @@ cd ~
 sudo wget https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 sudo cp chromedriver /usr/local/bin/
-
-## Install scraping libraries
-sudo pip3.6 install selenium
-sudo pip3.6 install bs4
-sudo pip3.6 install requests
-sudo pip3.6 install tweepy
