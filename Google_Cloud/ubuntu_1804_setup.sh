@@ -1,5 +1,5 @@
 ## Setup version variables
-export PYTHON_VERSION=3.6.5
+export PYTHON_VERSION=3.6.8
 
 #Update dependencies
 sudo apt-get update
