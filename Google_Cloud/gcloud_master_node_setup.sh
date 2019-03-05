@@ -30,6 +30,7 @@ sudo apt-get install python-dev python-pip -y
 sudo pip install docker-compose
 
 ### Setup gitlab
-cd gitlab
+sudo git clone https://github.com/matej-macak/VM-Setups/tree/master/Google_Cloud
+cd VM-Setups/Google_Cloud/gitlab
 sudo docker-compose -d
 
