@@ -1,13 +1,18 @@
+#!/bin/bash
+
 ## Setup version variables
 export PYTHON_VERSION=3.6.8
 
-#Update dependencies
+# Update dependencies
 sudo apt-get update
 sudo apt-get install build-essential -y
 sudo apt-get install python3-dev -y
 sudo apt-get install zlib1g-dev -y
 sudo apt-get install libreadline-gplv2-dev libffi-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev -y
 
+# Create folder to store the data
+mkdir /project
+cd /project
 
 # Install Python
 sudo wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
@@ -19,7 +24,7 @@ sudo make
 sudo make install
 cd ..
 
-#Install libraries for scipy
+# Install libraries for scipy
 sudo apt-get install gfortran libopenblas-dev liblapack-dev --assume-yes
 
 # Install NodeJs for Jupyter Lab
@@ -46,7 +51,5 @@ sudo apt-get install binutils gdal-bin -y
 
 # Install git
 sudo apt-get install git
-
-
 
 
