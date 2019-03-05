@@ -1,5 +1,5 @@
 ## Setup version variables
-export PYTHON_VERSION=3.6.5
+export PYTHON_VERSION=3.6.8
 
 #Update dependencies
 sudo apt-get update
@@ -14,10 +14,10 @@ sudo wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSI
 sudo tar -xzf Python-$PYTHON_VERSION.tgz
 
 cd Python-$PYTHON_VERSION
-
 sudo ./configure
 sudo make
 sudo make install
+cd ..
 
 #Install libraries for scipy
 sudo apt-get install gfortran libopenblas-dev liblapack-dev --assume-yes
