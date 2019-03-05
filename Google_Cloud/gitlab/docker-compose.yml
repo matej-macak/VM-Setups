@@ -1,5 +1,6 @@
+---
 gitlab:
-  image: 'gitlab/gitlab-ce:11.8.1-ce.0'
+  image: 'gitlab/gitlab-ce:9.1.0-ce.0'
   restart: always
   hostname: 'gitlab.example.com'
   links:
@@ -26,7 +27,7 @@ gitlab:
     # the mapped port must match ssh_port specified above.
     - "30022:22"
 # the following are hints on what volumes to mount if you want to persist data
- volumes:
+  volumes:
     - data/gitlab/config:/etc/gitlab:rw
     - data/gitlab/logs:/var/log/gitlab:rw
     - data/gitlab/data:/var/opt/gitlab:rw
@@ -39,9 +40,9 @@ postgresql:
     - POSTGRES_PASSWORD=gitlab
     - POSTGRES_DB=gitlabhq_production
 # the following are hints on what volumes to mount if you want to persist data
- volumes:
+  volumes:
     - data/postgresql:/var/lib/postgresql:rw
 
 redis:
   restart: always
-image: redis:3.0.7-alpine
+  image: redis:3.0.7-alpine
