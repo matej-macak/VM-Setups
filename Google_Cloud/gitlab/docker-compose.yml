@@ -1,6 +1,6 @@
 ---
 gitlab:
-  image: 'gitlab/gitlab-ce:11.8.1-ce.0'
+  image: 'gitlab/gitlab-ce:9.1.0-ce.0'
   restart: always
   hostname: 'gitlab.example.com'
   links:
@@ -28,9 +28,9 @@ gitlab:
     - "30022:22"
 # the following are hints on what volumes to mount if you want to persist data
   volumes:
-    - /data/gitlab/config:/etc/gitlab:rw
-    - /data/gitlab/logs:/var/log/gitlab:rw
-    - /data/gitlab/data:/var/opt/gitlab:rw
+    - data/gitlab/config:/etc/gitlab:rw
+    - data/gitlab/logs:/var/log/gitlab:rw
+    - data/gitlab/data:/var/opt/gitlab:rw
 
 postgresql:
   restart: always
@@ -41,7 +41,7 @@ postgresql:
     - POSTGRES_DB=gitlabhq_production
 # the following are hints on what volumes to mount if you want to persist data
   volumes:
-    - /data/postgresql:/var/lib/postgresql:rw
+    - data/postgresql:/var/lib/postgresql:rw
 
 redis:
   restart: always
