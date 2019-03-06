@@ -35,6 +35,6 @@ sudo mkdir /data
 sudo mkdir /temp
 cd /temp
 sudo git clone https://github.com/matej-macak/VM-Setups
-cd VM-Setups/Docker_DS_Environment/
+cd VM-Setups/Google_Cloud/
 sudo docker-compose up -d
 
