@@ -6,3 +6,5 @@ ipympl
 tqdm
 requests
 bs4
+tensorflow
+
