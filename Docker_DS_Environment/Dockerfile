@@ -45,7 +45,7 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 WORKDIR /shared
 
-EXPOSE 8888
+EXPOSE 8888 30081 30082
 
 ENTRYPOINT ["jupyter", "lab","--ip=0.0.0.0","--allow-root","--port=8888","--no-browser"]
 
