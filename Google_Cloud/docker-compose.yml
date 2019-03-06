@@ -54,3 +54,5 @@ dsenv:
     - "8888:8888"
   links:
     - gitlab:gitlab
+  volumes:
+    - ~:/shared:rw
