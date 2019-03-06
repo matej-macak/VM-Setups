@@ -52,5 +52,5 @@ dsenv:
   restart: always
   ports:
     - "8888:8888"
-  # links:
-  #   - gitlab:gitlab
+  links:
+    - gitlab:gitlab
