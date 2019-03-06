@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+matplotlib
+ipympl
+tqdm
+requests
+bs4
