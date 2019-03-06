@@ -49,6 +49,7 @@ redis:
 
 dsenv:
   build: .
+  restart: always
   ports:
     - "8888:8888"
   links:
