@@ -55,4 +55,4 @@ dsenv:
   links:
     - gitlab:gitlab
   volumes:
-    - /home:/shared:rw
+    - /home:/home:rw
