@@ -43,7 +43,7 @@ RUN npm -v
 RUN jupyter nbextension enable --py --sys-prefix ipympl
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
-WORKDIR /shared
+WORKDIR /home
 
 EXPOSE 8888
 
