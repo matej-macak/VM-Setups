@@ -43,47 +43,6 @@ RUN npm -v
 RUN jupyter nbextension enable --py --sys-prefix ipympl
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
-# Install neuron
-ARG NRN_VERSION="7.4"
-ARG NRN_ARCH="x86_64"
-ARG NRN_CONFIGURE_OPT="--without-iv --with-nrnpython=/usr/local/bin/python3.6 --with-paranrn --enable-static=yes"
-ARG NRN_CFLAGS="-O3"
-ARG NRN_CXXFLAGS="-O3"
-
-RUN apt-get update \
-    && apt-get install -y \
-        locales \
-        wget \
-        gcc \
-        g++ \
-        build-essential \
-        libpython-dev \
-        libpython3-dev \
-        libncurses-dev \
-        cython \
-        openmpi-bin \
-        openmpi-common \
-        libopenmpi-dev \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
-    && wget http://www.neuron.yale.edu/ftp/neuron/versions/v${NRN_VERSION}/nrn-${NRN_VERSION}.tar.gz \
-    && tar xvzf nrn-${NRN_VERSION}.tar.gz \
-    && rm nrn-${NRN_VERSION}.tar.gz \
-    && cd nrn-${NRN_VERSION} \
-    && ./configure --prefix=`pwd` ${NRN_CONFIGURE_OPT} CFLAGS=${NRN_CFLAGS} CXXFLAGS=${NRN_CXXFLAGS} \
-    && make \
-    && make install \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get autoclean
-
-RUN cd /work/nrn-7.4/src/nrnpython \
-    && python3.6 setup.py install
-
-# RUN useradd -m neuron
-# USER neuron
-
-ENV LANG en_US.utf8
-ENV PATH $PATH:/work/nrn-7.4/x86_64/bin
-
 WORKDIR /shared
 
 EXPOSE 8888
