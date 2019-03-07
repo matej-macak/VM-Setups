@@ -37,4 +37,3 @@ cd /temp
 sudo git clone https://github.com/matej-macak/VM-Setups
 cd VM-Setups/Google_Cloud/
 sudo docker-compose up -d
-

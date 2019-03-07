@@ -6,7 +6,16 @@ RUN pip install jupyter -U && pip install jupyterlab
 
 COPY requirements.txt /work
 
+### Dependencies for packages
+
+# Install airflow dependencies
+ARG SLUGIFY_USES_TEXT_UNIDECODE=yes
+
+# Install python packages in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Post install airflow setup
+RUN airflow upgradedb
 
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -42,6 +51,10 @@ RUN npm -v
 # Run jupyter notebook
 RUN jupyter nbextension enable --py --sys-prefix ipympl
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+# Install additional useful utilities
+RUN apt-get install -y htop \
+    && apt-get install -y unzip
 
 WORKDIR /home
 
