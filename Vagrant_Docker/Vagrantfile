@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+config.vm.box = "generic/ubuntu1804"
+   
+# Setup memory for the virtual machine
+config.vm.provider "hyperv" do |v|
+	v.maxmemory = 4096
+	v.memory = 4096
+	v.cpus = 2
+end
+
+config.vm.provision "docker" do |d|
+
+end
+
+config.vm.network "forwarded_port", guest: 8888, host: 8888
+config.vm.network "forwarded_port", guest: 30080, host: 30080
+
+config.ssh.forward_agent = true
+
+config.vm.synced_folder ".", "/vagrant", type: "smb"
+
+config.vm.provision "shell", path: "provision.sh", privileged: false
+
+end
