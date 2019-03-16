@@ -1,0 +1,17 @@
+numpy
+scipy
+pandas
+scikit-learn
+matplotlib
+seaborn
+tensorflow
+keras
+bs4
+ipympl
+xgboost
+bokeh
+pyyaml
+jupyter
+jupyterlab
+tqdm
+Cython
