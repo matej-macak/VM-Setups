@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 
 WORKDIR /work
 
@@ -55,6 +55,36 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 # Install additional useful utilities
 RUN apt-get install -y htop \
     && apt-get install -y unzip
+
+# Install SPARKFROM python:3.7
+
+ENV APACHE_SPARK_VERSION 2.4.1
+ENV HADOOP_VERSION 2.7
+
+# Set working directory
+WORKDIR /install
+
+# First install prerequisites
+RUN apt-get update
+RUN apt-get install software-properties-common -y
+
+# Install Java
+RUN add-apt-repository ppa:webupd8team/java -y
+RUN apt-get update -y
+RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+RUN apt-get install oracle-java8-installer -y --allow-unauthenticated
+
+# Get Spark
+RUN wget http://mirror.ox.ac.uk/sites/rsync.apache.org/spark/spark-${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+RUN tar -xvzf spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+RUN ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark
+
+ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle  
+ENV SPARK_HOME=/install/spark
+ENV PATH=$PATH:$JAVA_HOME/bin
+ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+ENV PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 WORKDIR /home
 
