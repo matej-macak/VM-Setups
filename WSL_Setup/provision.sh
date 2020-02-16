@@ -12,6 +12,7 @@ sudo apt-get install build-essential -y
 sudo apt-get install python3-dev -y
 sudo apt-get install zlib1g-dev -y
 sudo apt-get install libreadline-gplv2-dev libffi-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev -y
+sudo apt-get install liblzma-dev -y
 
 # Install Python
 cd ~
