@@ -5,10 +5,12 @@ scikit-learn
 matplotlib
 seaborn
 tensorflow
+torch
 keras
 bs4
 ipympl
 xgboost
+lightgbm
 bokeh
 pyyaml
 jupyter
