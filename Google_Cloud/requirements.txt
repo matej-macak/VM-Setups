@@ -16,5 +16,5 @@ tqdm==4.31.1
 tweepy==3.7.0
 xgboost==0.81
 lxml==4.9.1
-apache-airflow==2.6.3
+apache-airflow==2.7.0
 pyspark==3.2.2
