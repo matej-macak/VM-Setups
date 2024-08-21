@@ -16,5 +16,5 @@ tornado==6.4.1
 tweepy==3.7.0
 xgboost==0.81
 lxml==4.9.1
-apache-airflow==2.9.3
+apache-airflow==2.10.0
 pyspark==3.2.2
