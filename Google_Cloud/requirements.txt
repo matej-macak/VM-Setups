@@ -4,7 +4,7 @@ pandas==0.23.4
 beautifulsoup4==4.7.1
 bokeh==3.8.2
 ipympl==0.2.1
-Keras==3.13.2
+Keras==3.15.0
 requests==2.33.0
 scikit-learn==1.5.0
 scikit-optimize==0.5.2
